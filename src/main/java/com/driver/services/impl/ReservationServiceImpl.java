@@ -54,7 +54,7 @@ public class ReservationServiceImpl implements ReservationService {
             }
         }
         if (perfectSpot == null) {
-            return null;
+            return new Reservation();
         }
 
         perfectSpot.setOccupied(true);
