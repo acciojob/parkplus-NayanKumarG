@@ -28,7 +28,7 @@ public class ReservationServiceImpl implements ReservationService {
         Optional<User> userOptional = userRepository3.findById(userId);
         Optional<ParkingLot> parkingLotOptional = parkingLotRepository3.findById(parkingLotId);
         if(!userOptional.isPresent() || !parkingLotOptional.isPresent()){
-            return null;
+            return new Reservation();
         }
         List<Spot> spots = parkingLotOptional.get().getSpotList();
         List<Spot> spotsWithGivenType = new ArrayList<>();
