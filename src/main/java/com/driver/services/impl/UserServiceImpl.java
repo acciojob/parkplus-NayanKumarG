@@ -21,18 +21,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updatePassword(Integer userId, String password) {
-        Optional<User> userOptional = userRepository4.findById(userId);
-        userOptional.get().setPassword(password);
-        return userRepository4.save(userOptional.get());
+        User user=userRepository4.findById(userId).get();
+        user.setPassword(password);
+
+        userRepository4.save(user);
+
+        return user;
+
     }
 
     @Override
     public void register(String name, String phoneNumber, String password) {
-        User user = new User();
+        User user=new User();
         user.setName(name);
-        user.setPassword(password);
         user.setPhoneNumber(phoneNumber);
-        user.setReservationList(new ArrayList<>());
+        user.setPassword(password);
+
         userRepository4.save(user);
+
+
     }
 }
